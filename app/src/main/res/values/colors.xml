@@ -7,6 +7,6 @@
     <color name="bottom_bar_text_select_color">#F50057</color>
     <color name="lineColor">#BDBDBD</color>
     <color name="top_bar_text_color">#BDBDBD</color>
-    <color name="top_bar_text_press_color">#00E676</color>
+    <color name="top_bar_text_press_color">#FF4081</color>
     <color name="colorTabLine">#F50057</color>
 </resources>
