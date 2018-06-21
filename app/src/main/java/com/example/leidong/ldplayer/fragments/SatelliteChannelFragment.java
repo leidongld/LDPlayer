@@ -14,7 +14,7 @@ import com.example.leidong.ldplayer.R;
 /**
  * Created by Lei Dong on 2018/6/17.
  */
-public class SatelliteChannelFragment extends Fragment{
+public class SatelliteChannelFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

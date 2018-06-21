@@ -7,10 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.leidong.ldplayer.R;
+import com.example.leidong.ldplayer.beans.Music;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,11 +24,14 @@ import butterknife.ButterKnife;
  */
 public class LocalMusicAdapter extends RecyclerView.Adapter<LocalMusicAdapter.ViewHolder> {
     private Context context;
-    private String[] datas;
+    private Music[] localMusicArray;
+    private ArrayList<Music> localMusicList;
 
-    public LocalMusicAdapter(Context context, String[] datas) {
+    public LocalMusicAdapter(Context context, ArrayList<Music> localMusicList) {
         this.context = context;
-        this.datas = datas;
+        this.localMusicList = localMusicList;
+        localMusicArray = new Music[localMusicList.size()];
+        localMusicArray = localMusicList.toArray(localMusicArray);
     }
 
     @NonNull
@@ -35,11 +42,12 @@ public class LocalMusicAdapter extends RecyclerView.Adapter<LocalMusicAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        holder.text.setText(datas[position]);
-        holder.text.setOnClickListener(new View.OnClickListener() {
+        holder.songName.setText(localMusicArray[position].getName());
+        holder.songArtist.setText(localMusicArray[position].getArtist());
+        holder.localMusicItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, datas[position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, ""+ position, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -47,15 +55,21 @@ public class LocalMusicAdapter extends RecyclerView.Adapter<LocalMusicAdapter.Vi
 
     @Override
     public int getItemCount() {
-        if (datas.length != 0) {
-            return datas.length;
+        if (localMusicArray.length != 0) {
+            return localMusicArray.length;
         }
         return 0;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.text)
-        TextView text;
+        @BindView(R.id.tv_name)
+        TextView songName;
+
+        @BindView(R.id.tv_artist)
+        TextView songArtist;
+
+        @BindView(R.id.ll_local_music_item)
+        LinearLayout localMusicItem;
 
 
         ViewHolder(View itemView) {

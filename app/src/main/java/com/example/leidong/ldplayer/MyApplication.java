@@ -32,7 +32,7 @@ public class MyApplication extends Application {
      *
      * @return
      */
-    public static Context getContext(){
+    public static Context getContext() {
         return context;
     }
 
@@ -41,7 +41,7 @@ public class MyApplication extends Application {
      *
      * @return
      */
-    public static MyApplication getInstance(){
+    public static MyApplication getInstance() {
         return instance;
     }
 }
