@@ -9,8 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.leidong.ldplayer.MyApplication;
 import com.example.leidong.ldplayer.R;
 import com.example.leidong.ldplayer.adapters.LocalVideoAdapter;
+import com.example.leidong.ldplayer.beans.Video;
+import com.example.leidong.ldplayer.managers.LocalFileManager;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,21 +32,21 @@ public class LocalVideoFragment extends Fragment {
 
     Unbinder unbinder;
 
-    /*测试数据*/
-    private static final String[] DATATS = {
-            "001",
-            "002",
-            "003",
-            "004",
-            "005",
-            "006",
-            "007"
-    };
-
+    ArrayList<Video> localVideoList = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        obtainLocalVideos();
+    }
+
+    private void obtainLocalVideos() {
+        try {
+            localVideoList = LocalFileManager.getInstance(MyApplication.getContext()).getLocalVideos();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Nullable
@@ -62,7 +67,7 @@ public class LocalVideoFragment extends Fragment {
 
     private void initWidgets() {
         mLocalVideoContainer.setLayoutManager(new LinearLayoutManager(getContext()));
-        mLocalVideoContainer.setAdapter(new LocalVideoAdapter(getContext(), DATATS));
+        mLocalVideoContainer.setAdapter(new LocalVideoAdapter(getContext(), localVideoList));
     }
 
     @Override

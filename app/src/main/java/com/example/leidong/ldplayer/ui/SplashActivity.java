@@ -2,17 +2,12 @@ package com.example.leidong.ldplayer.ui;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.leidong.ldplayer.Constants;
 import com.example.leidong.ldplayer.R;
-import com.example.leidong.ldplayer.interfaces.OnPermissionsCheckListener;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 
@@ -71,13 +66,6 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void doBusiness() {
-        PermissionsUtils.checkPermissions(SplashActivity.this, Constants.PERMISSIONS, new OnPermissionsCheckListener() {
-            @Override
-            public void onResult(ArrayList<String> grantedPermissions, ArrayList<String> deniedCanAskPermissions, ArrayList<String> deniedNotAskPermissions) {
-
-            }
-        });
-
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -87,13 +75,5 @@ public class SplashActivity extends BaseActivity {
                 Log.d(TAG, "当前线程的名称==" + Thread.currentThread().getName());
             }
         }, 2000);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(permissions.length > 0){
-            PermissionsUtils.onRequestPermissionsResult(SplashActivity.this, requestCode, permissions, grantResults);
-        }
     }
 }

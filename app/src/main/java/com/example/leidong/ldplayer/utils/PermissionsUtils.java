@@ -1,10 +1,11 @@
-package com.example.leidong.ldplayer.ui;
+package com.example.leidong.ldplayer.utils;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 
 import com.example.leidong.ldplayer.beans.PermissionsBean;
 import com.example.leidong.ldplayer.interfaces.OnPermissionsCheckListener;
@@ -12,10 +13,6 @@ import com.example.leidong.ldplayer.interfaces.OnPermissionsCheckListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
-
-/**
- * Created by Lei Dong on 2018/6/21.
- */
 
 /**
  * Created by Lei Dong on 2018/5/28.
@@ -170,19 +167,18 @@ public class PermissionsUtils {
     }
 
 
-    public static void onRequestPermissionsResult(Activity context, int requestCode, String[] permissions, int[] grantedResult) {
+    public static void onRequestPermissionsResult(Activity context, int requestCode, String[] permissions) {
         PermissionsBean permissionsBean = mPermissionsBeanMap.get(requestCode);
         OnPermissionsCheckListener onPermissionsCheckListener = permissionsBean.getOnPermissionsCheckListener();
         HashMap<String, Integer> permissionsMap = permissionsBean.getPermissionsMap();
 
-        ArrayList<String> grantedPermissionsList;
-        ArrayList<String> deniedPermissionsCanAskList;
-        ArrayList<String> deniedPermissionsNotAskList;
+        ArrayList<String> grantedPermissionsList = new ArrayList<>();
+        ArrayList<String> deniedPermissionsCanAskList = new ArrayList<>();
+        ArrayList<String> deniedPermissionsNotAskList = new ArrayList<>();
 
         if(onPermissionsCheckListener != null){
-            int i = 0;
             for(String permission : permissionsMap.keySet()){
-                int permissionState = grantedResult[i++];
+                int permissionState = ContextCompat.checkSelfPermission(context, permission);
                 if(permissionState == PERMISSION_GRANTED_STATE){
                     permissionsMap.put(permission, PERMISSION_GRANTED_STATE);
                 }

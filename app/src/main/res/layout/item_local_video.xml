@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="91dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical">
-    <TextView
-        android:id="@+id/text"
+    <LinearLayout
+        android:id="@+id/ll_local_video_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:paddingLeft="20dp"
-        android:gravity="center_vertical"/>
+        android:layout_height="90dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/local_video_icon"
+            android:layout_margin="9dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="视频名"
+                android:textSize="18sp"
+                android:layout_margin="12dp"
+                android:ellipsize="end"
+                android:lines="1"/>
+            <TextView
+                android:id="@+id/tv_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="时长"
+                android:textColor="#BBBBBB"
+                android:textSize="14sp"
+                android:layout_marginLeft="16dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineColor"/>
 </LinearLayout>

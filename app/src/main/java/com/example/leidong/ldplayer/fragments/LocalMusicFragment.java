@@ -14,7 +14,7 @@ import com.example.leidong.ldplayer.MyApplication;
 import com.example.leidong.ldplayer.R;
 import com.example.leidong.ldplayer.adapters.LocalMusicAdapter;
 import com.example.leidong.ldplayer.beans.Music;
-import com.example.leidong.ldplayer.managers.FileManager;
+import com.example.leidong.ldplayer.managers.LocalFileManager;
 
 import java.util.ArrayList;
 
@@ -33,21 +33,21 @@ public class LocalMusicFragment extends Fragment {
 
     Unbinder unbinder;
 
-    private static final String[] DATAS = {
-            "001",
-            "002",
-            "003",
-            "004",
-            "005",
-            "006",
-            "007"
-    };
-
-    private ArrayList<Music> localMusicList = FileManager.getInstance(MyApplication.getContext()).getLocalMusic();
+    private ArrayList<Music> localMusicList = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        obtainLocalMusics();
+    }
+
+    private void obtainLocalMusics() {
+        try {
+            localMusicList = LocalFileManager.getInstance(MyApplication.getContext()).getLocalMusic();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Nullable

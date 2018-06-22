@@ -1,8 +1,13 @@
 package com.example.leidong.ldplayer.ui;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -68,6 +73,7 @@ public class MainActivity extends BaseActivity {
         mVideoFragment = new VideoFragment();
         mFragmentTransaction.replace(R.id.fl_main_container, mVideoFragment);
         mFragmentTransaction.commit();
+
     }
 
     @Override
@@ -100,7 +106,16 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void doBusiness() {
+        int state = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        if(state != PackageManager.PERMISSION_GRANTED){
+            startSettings();
+        }
+    }
 
+
+    private void startSettings() {
+        Intent intent =  new Intent(Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS);
+        startActivity(intent);
     }
 
     @Override

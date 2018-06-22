@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 
 import com.example.leidong.ldplayer.MyApplication;
 import com.example.leidong.ldplayer.beans.Music;
+import com.example.leidong.ldplayer.beans.Video;
 import com.example.leidong.ldplayer.utils.FileUtils;
 
 import java.util.ArrayList;
@@ -15,22 +16,28 @@ import java.util.ArrayList;
 /**
  * Created by Lei Dong on 2018/6/18.
  */
-public class FileManager {
+public class LocalFileManager {
     @SuppressLint("StaticFieldLeak")
-    private static FileManager mInstance;
+    private static LocalFileManager mInstance;
 
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
 
-    public static ContentResolver mContentResolver;
+    private static ContentResolver mContentResolver;
 
     private static final Object mLock = new Object();
 
-    public static FileManager getInstance(Context context) {
+    /**
+     * 获取LocalFileManager实例
+     *
+     * @param context
+     * @return
+     */
+    public static LocalFileManager getInstance(Context context) {
         if (mInstance == null) {
             synchronized (mLock) {
                 if(mInstance == null) {
-                    mInstance = new FileManager();
+                    mInstance = new LocalFileManager();
                     mContext = context;
                     mContentResolver = MyApplication.getContext().getContentResolver();
                 }
@@ -40,6 +47,11 @@ public class FileManager {
     }
 
 
+    /**
+     * 获取本地音乐
+     *
+     * @return
+     */
     public ArrayList<Music> getLocalMusic() {
         ArrayList<Music> localMusicList = new ArrayList<>();
         Cursor cursor;
@@ -59,8 +71,6 @@ public class FileManager {
                 String artist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST));
                 long size = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.SIZE));
                 int duration = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION));
-                int time = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID));
-//            String name = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID));
 
                 Music music = new Music();
                 music.setId(0);
@@ -83,6 +93,43 @@ public class FileManager {
             }
         }
         return localMusicList;
+    }
+
+    /**
+     * 获取本机视频列表
+     *
+     * @return
+     */
+    public ArrayList<Video> getLocalVideos() {
+
+        ArrayList<Video> videos = new ArrayList<Video>();
+
+        Cursor c = null;
+        try {
+            c = mContentResolver.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Video.Media.DEFAULT_SORT_ORDER);
+            while (c.moveToNext()) {
+                String path = c.getString(c.getColumnIndexOrThrow(MediaStore.Video.Media.DATA));// 路径
+                if (!FileUtils.isExist(path)) {
+                    continue;
+                }
+
+                String name = c.getString(c.getColumnIndexOrThrow(MediaStore.Video.Media.DISPLAY_NAME)); // 视频名称
+                String resolution = c.getString(c.getColumnIndexOrThrow(MediaStore.Video.Media.RESOLUTION)); //分辨率
+                long size = c.getLong(c.getColumnIndexOrThrow(MediaStore.Video.Media.SIZE));// 大小
+                long duration = c.getLong(c.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION));// 时长
+                long date = c.getLong(c.getColumnIndexOrThrow(MediaStore.Video.Media.DATE_MODIFIED));//修改时间
+
+                Video video = new Video();
+                videos.add(video);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+        }
+        return videos;
     }
 }
 
