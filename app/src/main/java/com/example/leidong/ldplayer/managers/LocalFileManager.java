@@ -107,8 +107,10 @@ public class LocalFileManager {
         Cursor c = null;
         try {
             c = mContentResolver.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Video.Media.DEFAULT_SORT_ORDER);
+            assert c != null;
             while (c.moveToNext()) {
                 String path = c.getString(c.getColumnIndexOrThrow(MediaStore.Video.Media.DATA));// 路径
+
                 if (!FileUtils.isExist(path)) {
                     continue;
                 }
@@ -120,6 +122,14 @@ public class LocalFileManager {
                 long date = c.getLong(c.getColumnIndexOrThrow(MediaStore.Video.Media.DATE_MODIFIED));//修改时间
 
                 Video video = new Video();
+                video.setName(name);
+                video.setLocal(true);
+                video.setPath(path);
+                video.setResolution(resolution);
+                video.setSize(size);
+                video.setDuration(duration);
+                video.setDate(date);
+                video.setImagePath(null);
                 videos.add(video);
             }
         } catch (Exception e) {

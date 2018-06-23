@@ -20,12 +20,13 @@ public class Video {
 
     private long date;
 
-    private long imagePath;
+    private String imagePath;
 
     public Video() {
+        id = 0;
     }
 
-    public Video(int id, boolean isLocal, String name,String path, String resolution, long size, long duration, long date, long imagePath) {
+    public Video(int id, boolean isLocal, String name,String path, String resolution, long size, long duration, long date, String imagePath) {
         this.id = id;
         this.isLocal = isLocal;
         this.name = name;
@@ -101,11 +102,11 @@ public class Video {
         this.date = date;
     }
 
-    public long getImagePath() {
+    public String getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(long imagePath) {
+    public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
 }

@@ -2,12 +2,16 @@ package com.example.leidong.ldplayer.ui;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -46,6 +50,9 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.rg_button_tag)
     RadioGroup mRgButtonTag;
 
+    @BindView(R.id.tb_main)
+    Toolbar mTbMain;
+
     private FragmentManager mFragmentManager;
 
     private FragmentTransaction mFragmentTransaction;
@@ -66,6 +73,8 @@ public class MainActivity extends BaseActivity {
     @SuppressLint("CommitTransaction")
     @Override
     public void initWidgets() {
+        configToolBar();
+
         mRgButtonTag.check(R.id.rbt_video);
 
         mFragmentManager = getSupportFragmentManager();
@@ -74,6 +83,55 @@ public class MainActivity extends BaseActivity {
         mFragmentTransaction.replace(R.id.fl_main_container, mVideoFragment);
         mFragmentTransaction.commit();
 
+    }
+
+    /**
+     * 配置ToolBar
+     *
+     */
+    private void configToolBar() {
+        setSupportActionBar(mTbMain);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        mTbMain.setNavigationIcon(R.drawable.app_logo_small);
+
+        mTbMain.setOnMenuItemClickListener(onMenuItemClick);
+    }
+
+    private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            String msg = "";
+            switch (menuItem.getItemId()) {
+                case R.id.action_edit:
+                    startActivity(MainActivity.this, EditActivity.class);
+                    break;
+                case R.id.action_share:
+                    startActivity(MainActivity.this, ShareActivity.class);
+                    break;
+                case R.id.action_settings:
+                    startActivity(MainActivity.this, SettingsActivity.class);
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        }
+    };
+
+    /**
+     * 界面跳转
+     *  @param fromActivity
+     * @param toActivityClass
+     */
+    private void startActivity(Activity fromActivity, Class<?> toActivityClass) {
+        Intent intent = new Intent(fromActivity, toActivityClass);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.base_toolbar_menu, menu);
+        return true;
     }
 
     @Override
@@ -107,14 +165,14 @@ public class MainActivity extends BaseActivity {
     @Override
     public void doBusiness() {
         int state = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        if(state != PackageManager.PERMISSION_GRANTED){
+        if (state != PackageManager.PERMISSION_GRANTED) {
             startSettings();
         }
     }
 
 
     private void startSettings() {
-        Intent intent =  new Intent(Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS);
+        Intent intent = new Intent(Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS);
         startActivity(intent);
     }
 

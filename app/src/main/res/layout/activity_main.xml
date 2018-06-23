@@ -8,12 +8,15 @@
     android:orientation="vertical">
 
     <!--上方标题栏-->
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_main"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/colorAccent">
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_scrollFlags="scroll|enterAlways">
+    </android.support.v7.widget.Toolbar>
 
     <!--中间主要内容-->
     <FrameLayout
