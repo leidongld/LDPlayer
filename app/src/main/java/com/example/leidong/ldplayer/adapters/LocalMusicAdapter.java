@@ -55,10 +55,7 @@ public class LocalMusicAdapter extends RecyclerView.Adapter<LocalMusicAdapter.Vi
 
     @Override
     public int getItemCount() {
-        if (localMusicArray.length != 0) {
-            return localMusicArray.length;
-        }
-        return 0;
+        return localMusicList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

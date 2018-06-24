@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.leidong.ldplayer.MyApplication;
 import com.example.leidong.ldplayer.R;
+import com.example.leidong.ldplayer.adapters.ArtistsAdapter;
+import com.example.leidong.ldplayer.beans.Artist;
+import com.example.leidong.ldplayer.beans.Bann;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -35,9 +40,16 @@ public class InternetMusicFragment extends Fragment implements OnBannerListener 
     @BindView(R.id.banner)
     Banner mBanner;
 
-    ArrayList<String> imagePaths;
+    @BindView(R.id.recyclerview)
+    RecyclerView mRecyclerview;
 
-    ArrayList<String> names;
+    private ArrayList<Bann> bannersList;
+
+    private ArrayList<String> bannerImagePaths;
+
+    private ArrayList<String> bannerNames;
+
+    private ArrayList<Artist> artistsList;
 
     Unbinder unbinder;
 
@@ -50,7 +62,7 @@ public class InternetMusicFragment extends Fragment implements OnBannerListener 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_internet_internet_music, container, false);
+        View view = inflater.inflate(R.layout.fragment_internet_music, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -60,37 +72,112 @@ public class InternetMusicFragment extends Fragment implements OnBannerListener 
         super.onActivityCreated(savedInstanceState);
 
         configBanner();
+
+        configArtists();
+    }
+
+    /**
+     * 配置艺术家信息
+     *
+     */
+    private void configArtists() {
+        artistsList = new ArrayList<>();
+
+        artistsList.add(new Artist(
+                1,
+                "陈奕迅",
+                278,
+                "陈奕迅简介",
+                "https://y.gtimg.cn/music/photo_new/T001R300x300M000003Nz2So3XXYek.jpg?max_age=2592000"));
+        artistsList.add(new Artist(
+                2,
+                "邓紫棋",
+                421,
+                "邓紫棋简介",
+                "https://y.gtimg.cn/music/photo_new/T001R150x150M000001fNHEf1SFEFN.jpg?max_age=2592000"));
+        artistsList.add(new Artist(
+                3,
+                "薛之谦",
+                166,
+                "薛之谦简介",
+                "https://y.gtimg.cn/music/photo_new/T001R150x150M000002J4UUk29y8BY.jpg?max_age=2592000"));
+        artistsList.add(new Artist(
+                4,
+                "林俊杰",
+                207,
+                "林俊杰简介",
+                "https://y.gtimg.cn/music/photo_new/T001R150x150M000001BLpXF2DyJe2.jpg?max_age=2592000"));
+        artistsList.add(new Artist(
+                5,
+                "孙燕姿",
+                519,
+                "孙燕姿简介",
+                "https://y.gtimg.cn/music/photo_new/T001R150x150M000001pWERg3vFgg8.jpg?max_age=2592000"));
+        artistsList.add(new Artist(
+                6,
+                "刘惜君",
+                62,
+                "刘惜君简介",
+                "https://y.gtimg.cn/music/photo_new/T001R150x150M000003x77MM2iIg6c.jpg?max_age=2592000"));
+        artistsList.add(new Artist(
+                7,
+                "李荣浩",
+                173,
+                "李荣浩简介",
+                "https://y.gtimg.cn/music/photo_new/T001R150x150M000000aHmbL2aPXWH.jpg?max_age=2592000"));
+        artistsList.add(new Artist(
+                8,
+                "刘瑞琦",
+                48,
+                "刘瑞琦简介",
+                "https://y.gtimg.cn/music/photo_new/T001R150x150M000003bQEFA3KrvLI.jpg?max_age=2592000"));
+        artistsList.add(new Artist(
+                9,
+                "林忆莲",
+                140,
+                "林忆莲简介",
+                "https://y.gtimg.cn/music/photo_new/T001R150x150M000002u0TJy47WWOj.jpg?max_age=2592000"));
+        artistsList.add(new Artist(
+                10,
+                "张靓颖",
+                120,
+                "张靓颖简介",
+                "https://y.gtimg.cn/music/photo_new/T001R150x150M000000aw4WC2EQYTv.jpg?max_age=2592000"));
+
+        mRecyclerview.setLayoutManager(new GridLayoutManager(MyApplication.getContext(), 2));
+        mRecyclerview.setAdapter(new ArtistsAdapter(MyApplication.getContext(), artistsList));
     }
 
     /**
      * 配置轮播图
-     *
      */
     private void configBanner() {
-        imagePaths = new ArrayList<>();
-        names = new ArrayList<>();
+        bannersList = new ArrayList<>();
+        bannerImagePaths = new ArrayList<>();
+        bannerNames = new ArrayList<>();
 
-        imagePaths.add("https://images.pexels.com/photos/33597/guitar-classical-guitar-acoustic-guitar-electric-guitar.jpg?auto=compress&cs=tinysrgb&h=350");
-        imagePaths.add("https://images.pexels.com/photos/111287/pexels-photo-111287.jpeg?auto=compress&cs=tinysrgb&h=350");
-        imagePaths.add("https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&h=350");
-        imagePaths.add("https://images.pexels.com/photos/625644/pexels-photo-625644.jpeg?auto=compress&cs=tinysrgb&h=350");
-        names.add("音乐1");
-        names.add("音乐2");
-        names.add("音乐3");
-        names.add("音乐4");
+        bannersList.add(new Bann(1, "音乐1", "https://images.pexels.com/photos/33597/guitar-classical-guitar-acoustic-guitar-electric-guitar.jpg?auto=compress&cs=tinysrgb&h=350"));
+        bannersList.add(new Bann(2, "音乐2", "https://images.pexels.com/photos/111287/pexels-photo-111287.jpeg?auto=compress&cs=tinysrgb&h=350"));
+        bannersList.add(new Bann(3, "音乐3", "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&h=350"));
+        bannersList.add(new Bann(4, "音乐4", "https://images.pexels.com/photos/625644/pexels-photo-625644.jpeg?auto=compress&cs=tinysrgb&h=350"));
+
+        for (int i = 0; i < bannersList.size(); i++) {
+            bannerImagePaths.add(bannersList.get(i).getBannerImagePath());
+            bannerNames.add(bannersList.get(i).getBannerName());
+        }
 
         //设置内置样式，共有六种可以点入方法内逐一体验使用。
         mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
         //设置图片加载器，图片加载器在下方
         mBanner.setImageLoader(new MyLoader());
         //设置图片网址或地址的集合
-        mBanner.setImages(imagePaths);
+        mBanner.setImages(bannerImagePaths);
         //设置轮播的动画效果，内含多种特效，可点入方法内查找后内逐一体验
         mBanner.setBannerAnimation(Transformer.Default);
         //设置轮播图的标题集合
-        mBanner.setBannerTitles(names);
+        mBanner.setBannerTitles(bannerNames);
         //设置轮播间隔时间
-        mBanner.setDelayTime(4000);
+        mBanner.setDelayTime(3000);
         //设置是否为自动轮播，默认是“是”。
         mBanner.isAutoPlay(true);
         //设置指示器的位置，小点点，左中右。
