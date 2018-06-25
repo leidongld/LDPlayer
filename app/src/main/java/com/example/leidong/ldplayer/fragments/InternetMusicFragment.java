@@ -1,6 +1,7 @@
 package com.example.leidong.ldplayer.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.leidong.ldplayer.MyApplication;
@@ -19,6 +19,8 @@ import com.example.leidong.ldplayer.R;
 import com.example.leidong.ldplayer.adapters.ArtistsAdapter;
 import com.example.leidong.ldplayer.beans.Artist;
 import com.example.leidong.ldplayer.beans.Bann;
+import com.example.leidong.ldplayer.ui.SubInternetMusicActivity;
+import com.example.leidong.ldplayer.utils.DataUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -83,66 +85,7 @@ public class InternetMusicFragment extends Fragment implements OnBannerListener 
     private void configArtists() {
         artistsList = new ArrayList<>();
 
-        artistsList.add(new Artist(
-                1,
-                "陈奕迅",
-                278,
-                "陈奕迅简介",
-                "https://y.gtimg.cn/music/photo_new/T001R300x300M000003Nz2So3XXYek.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                2,
-                "邓紫棋",
-                421,
-                "邓紫棋简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000001fNHEf1SFEFN.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                3,
-                "薛之谦",
-                166,
-                "薛之谦简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000002J4UUk29y8BY.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                4,
-                "林俊杰",
-                207,
-                "林俊杰简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000001BLpXF2DyJe2.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                5,
-                "孙燕姿",
-                519,
-                "孙燕姿简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000001pWERg3vFgg8.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                6,
-                "刘惜君",
-                62,
-                "刘惜君简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000003x77MM2iIg6c.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                7,
-                "李荣浩",
-                173,
-                "李荣浩简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000000aHmbL2aPXWH.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                8,
-                "刘瑞琦",
-                48,
-                "刘瑞琦简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000003bQEFA3KrvLI.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                9,
-                "林忆莲",
-                140,
-                "林忆莲简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000002u0TJy47WWOj.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                10,
-                "张靓颖",
-                120,
-                "张靓颖简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000000aw4WC2EQYTv.jpg?max_age=2592000"));
+        DataUtils.loadArtists(artistsList);
 
         mRecyclerview.setLayoutManager(new GridLayoutManager(MyApplication.getContext(), 2));
         mRecyclerview.setAdapter(new ArtistsAdapter(MyApplication.getContext(), artistsList));
@@ -156,10 +99,7 @@ public class InternetMusicFragment extends Fragment implements OnBannerListener 
         bannerImagePaths = new ArrayList<>();
         bannerNames = new ArrayList<>();
 
-        bannersList.add(new Bann(1, "音乐1", "https://images.pexels.com/photos/33597/guitar-classical-guitar-acoustic-guitar-electric-guitar.jpg?auto=compress&cs=tinysrgb&h=350"));
-        bannersList.add(new Bann(2, "音乐2", "https://images.pexels.com/photos/111287/pexels-photo-111287.jpeg?auto=compress&cs=tinysrgb&h=350"));
-        bannersList.add(new Bann(3, "音乐3", "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&h=350"));
-        bannersList.add(new Bann(4, "音乐4", "https://images.pexels.com/photos/625644/pexels-photo-625644.jpeg?auto=compress&cs=tinysrgb&h=350"));
+        DataUtils.loadInternetMusicBanners(bannersList);
 
         for (int i = 0; i < bannersList.size(); i++) {
             bannerImagePaths.add(bannersList.get(i).getBannerImagePath());
@@ -190,7 +130,8 @@ public class InternetMusicFragment extends Fragment implements OnBannerListener 
 
     @Override
     public void OnBannerClick(int position) {
-        Toast.makeText(MyApplication.getContext(), "" + position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MyApplication.getContext(), SubInternetMusicActivity.class);
+        MyApplication.getContext().startActivity(intent);
     }
 
     //自定义的图片加载器

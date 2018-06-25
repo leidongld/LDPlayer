@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.leidong.ldplayer">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApplication"
@@ -13,37 +13,41 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <!--欢迎界面-->
+
+        <!-- 欢迎界面 -->
         <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!--主界面-->
-        <activity android:name=".ui.MainActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance">
-        </activity>
+        <!-- 主界面 -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
 
-        <!--编辑界面-->
-        <activity android:name=".ui.EditActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance">
-        </activity>
+        <!-- 编辑界面 -->
+        <activity
+            android:name=".ui.EditActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
 
-        <!--分享界面-->
-        <activity android:name=".ui.ShareActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance">
-        </activity>
+        <!-- 分享界面 -->
+        <activity
+            android:name=".ui.ShareActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
 
-        <!--设置界面-->
-        <activity android:name=".ui.SettingsActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance">
-        </activity>
+        <!-- 设置界面 -->
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.SubInternetMusicActivity" />
+        <activity android:name=".ui.SubInternetVideoActivity"></activity>
     </application>
 
 </manifest>
