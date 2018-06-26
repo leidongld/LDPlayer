@@ -33,7 +33,7 @@ public class SubInternetMusicActivity extends BaseActivity {
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerview;
 
-    private ArrayList<Music> musicsList;
+    private ArrayList<Music> musicsList = new ArrayList<>();
 
     @Override
     protected int bindLayout() {
@@ -58,8 +58,6 @@ public class SubInternetMusicActivity extends BaseActivity {
      * 加载数据
      */
     private void loadData() {
-        musicsList = new ArrayList<>();
-
         DataUtils.loadMusics(musicsList);
     }
 

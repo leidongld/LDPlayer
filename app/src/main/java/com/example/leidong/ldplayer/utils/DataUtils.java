@@ -4,6 +4,7 @@ import com.example.leidong.ldplayer.beans.Artist;
 import com.example.leidong.ldplayer.beans.Bann;
 import com.example.leidong.ldplayer.beans.Music;
 import com.example.leidong.ldplayer.beans.Theme;
+import com.example.leidong.ldplayer.beans.Video;
 
 import java.util.ArrayList;
 /**
@@ -273,5 +274,73 @@ public class DataUtils {
                 0,
                 0,
                 "www"));
+    }
+
+    /**
+     * 加载视频数据
+     *
+     * @param videosList
+     */
+    public static void loadVideos(ArrayList<Video> videosList) {
+        videosList.add(new Video(
+                1,
+                false,
+                1,
+                "视频1",
+                "",
+                "",
+                100,
+                100,
+                100,
+                "https://images.pexels.com/photos/35799/summer-still-life-suitcase-in-field-grass-summer.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+        ));
+        videosList.add(new Video(
+                2,
+                false,
+                1,
+                "视频2",
+                "",
+                "",
+                100,
+                100,
+                100,
+                "https://images.pexels.com/photos/733883/pexels-photo-733883.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+        ));
+        videosList.add(new Video(
+                3,
+                false,
+                1,
+                "视频3",
+                "",
+                "",
+                100,
+                100,
+                100,
+                "https://images.pexels.com/photos/83932/pexels-photo-83932.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+        ));
+        videosList.add(new Video(
+                4,
+                false,
+                1,
+                "视频4",
+                "",
+                "",
+                100,
+                100,
+                100,
+                "https://images.pexels.com/photos/635284/pexels-photo-635284.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+        ));
+        videosList.add(new Video(
+                5,
+                false,
+                1,
+                "视频5",
+                "",
+                "",
+                100,
+                100,
+                100,
+                "https://images.pexels.com/photos/122734/pexels-photo-122734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+        ));
     }
 }
