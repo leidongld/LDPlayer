@@ -2,6 +2,7 @@ package com.example.leidong.ldplayer.utils;
 
 import com.example.leidong.ldplayer.beans.Artist;
 import com.example.leidong.ldplayer.beans.Bann;
+import com.example.leidong.ldplayer.beans.Channel;
 import com.example.leidong.ldplayer.beans.Music;
 import com.example.leidong.ldplayer.beans.Theme;
 import com.example.leidong.ldplayer.beans.Video;
@@ -341,6 +342,319 @@ public class DataUtils {
                 100,
                 100,
                 "https://images.pexels.com/photos/122734/pexels-photo-122734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+        ));
+    }
+
+
+    /**
+     * 配置CCTV节目信息
+     *
+     * @param channelsList
+     */
+    public static void loadCCTVChannels(ArrayList<Channel> channelsList) {
+        channelsList.add(new Channel(
+                1,
+                1,
+                "CCTV1",
+                "sourcePath",
+                "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                2,
+                1,
+                "CCTV2",
+                "sourcePath",
+                "https://images.pexels.com/photos/194511/pexels-photo-194511.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                3,
+                1,
+                "CCTV3",
+                "sourcePath",
+                "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                4,
+                1,
+                "CCTV4",
+                "sourcePath",
+                "https://images.pexels.com/photos/591652/play-fun-blocks-block-591652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                5,
+                1,
+                "CCTV5",
+                "sourcePath",
+                "https://images.pexels.com/photos/756439/pexels-photo-756439.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                6,
+                1,
+                "CCTV6",
+                "sourcePath",
+                "https://images.pexels.com/photos/776092/pexels-photo-776092.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                7,
+                1,
+                "CCTV7",
+                "sourcePath",
+                "https://images.pexels.com/photos/209600/pexels-photo-209600.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                8,
+                1,
+                "CCTV8",
+                "sourcePath",
+                "https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                9,
+                1,
+                "CCTV9",
+                "sourcePath",
+                "https://images.pexels.com/photos/168866/pexels-photo-168866.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                10,
+                1,
+                "CCTV10",
+                "sourcePath",
+                "https://images.pexels.com/photos/163828/poker-game-play-gambling-163828.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                1,
+                1,
+                "CCTV1",
+                "sourcePath",
+                "",
+                ""
+        ));
+        channelsList.add(new Channel(
+                11,
+                1,
+                "CCTV11",
+                "sourcePath",
+                "https://images.pexels.com/photos/1011334/pexels-photo-1011334.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                12,
+                1,
+                "CCTV12",
+                "sourcePath",
+                "https://images.pexels.com/photos/70459/darts-dart-board-bull-s-eye-game-70459.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                13,
+                1,
+                "CCTV13",
+                "sourcePath",
+                "https://images.pexels.com/photos/39562/the-ball-stadion-football-the-pitch-39562.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+    }
+
+    /**
+     * 配置美食节目信息
+     *
+     * @param channelsList
+     */
+    public static void loadFoodChanels(ArrayList<Channel> channelsList) {
+        channelsList.add(new Channel(
+                1,
+                1,
+                "美食1",
+                "sourcePath",
+                "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                2,
+                1,
+                "美食2",
+                "sourcePath",
+                "https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                3,
+                1,
+                "美食3",
+                "sourcePath",
+                "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                4,
+                1,
+                "美食4",
+                "sourcePath",
+                "https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                5,
+                1,
+                "美食5",
+                "sourcePath",
+                "https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                6,
+                1,
+                "美食6",
+                "sourcePath",
+                "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+        channelsList.add(new Channel(
+                7,
+                1,
+                "美食7",
+                "sourcePath",
+                "https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
+                ""
+        ));
+    }
+
+    /**
+     * 配置电影节目信息
+     *
+     * @param channelsList
+     */
+    public static void loadMovieChannels(ArrayList<Channel> channelsList) {
+        channelsList.add(new Channel(
+                1,
+                1,
+                "电影1",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                2,
+                1,
+                "电影2",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-001.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                3,
+                1,
+                "电影3",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-002.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                4,
+                1,
+                "电影4",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-003.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                5,
+                1,
+                "电影5",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-004.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                6,
+                1,
+                "电影6",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-005.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                7,
+                1,
+                "电影7",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-006.jpg",
+                ""
+        ));
+    }
+
+    /**
+     * 加载卫视节目数据
+     *
+     * @param channelsList
+     */
+    public static void loadSatelliteChannels(ArrayList<Channel> channelsList) {
+        channelsList.add(new Channel(
+                1,
+                1,
+                "卫视1",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201507/19/game_of_thrones-011.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                2,
+                1,
+                "卫视2",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201507/19/game_of_thrones-010.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                3,
+                1,
+                "卫视3",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201406/07/game_of_thrones_season-038.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                4,
+                1,
+                "卫视4",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/t/201406/07/game_of_thrones_season-022.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                5,
+                1,
+                "卫视5",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201406/03/game_of_thrones-014.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                6,
+                1,
+                "卫视6",
+                "sourcePath",
+                "http://img.ivsky.com/img/bizhi/pre/201406/03/game_of_thrones-019.jpg",
+                ""
+        ));
+        channelsList.add(new Channel(
+                7,
+                1,
+                "卫视7",
+                "sourcePath",
+                "http://d.5857.com/qldyx_160705/005.jpg",
+                ""
         ));
     }
 }
