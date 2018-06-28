@@ -3,14 +3,14 @@ package com.example.leidong.ldplayer.ui;
 import com.example.leidong.ldplayer.R;
 
 /**
- * Created by Lei Dong on 2018/6/23.
+ * Created by Lei Dong on 2018/6/28.
  */
-public class SettingsActivity extends BaseActivity{
-    private static final String TAG = SettingsActivity.class.getSimpleName();
+public class VideoPlayActivity extends BaseActivity {
+    private static final String TAG = VideoPlayActivity.class.getSimpleName();
 
     @Override
     protected int bindLayout() {
-        return R.layout.activity_settings;
+        return R.layout.activity_video_play;
     }
 
     @Override
