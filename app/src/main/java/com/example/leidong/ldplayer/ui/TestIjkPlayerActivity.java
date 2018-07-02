@@ -63,12 +63,11 @@ public class TestIjkPlayerActivity extends AppCompatActivity{
 
     private void initActions() {
         mPlayerView = (IjkPlayerView) findViewById(R.id.player_view);
-        Uri mUri = Uri.parse("http://covertness.qiniudn" +
-                ".com/android_zaixianyingyinbofangqi_test_baseline.mp4");
+        Uri mUri = Uri.parse("http://dlhls.cdn.zhanqi.tv/zqlive/35349_iXsXw.m3u8");
 
         mPlayerView.init()
                 .setVideoPath(mUri)
-                .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
+                .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_SMOOTH)
                 .enableDanmaku()
                 .start();
     }

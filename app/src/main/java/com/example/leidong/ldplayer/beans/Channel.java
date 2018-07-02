@@ -1,9 +1,11 @@
 package com.example.leidong.ldplayer.beans;
 
+import java.io.Serializable;
+
 /**
  * Created by Lei Dong on 2018/6/27.
  */
-public class Channel {
+public class Channel  implements Serializable {
     private int id;
 
     private int categoryId;

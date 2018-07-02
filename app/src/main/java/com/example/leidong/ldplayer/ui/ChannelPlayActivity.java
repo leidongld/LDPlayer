@@ -8,21 +8,18 @@ import android.view.KeyEvent;
 
 import com.dl7.player.media.IjkPlayerView;
 import com.example.leidong.ldplayer.R;
-import com.example.leidong.ldplayer.beans.Music;
+import com.example.leidong.ldplayer.beans.Channel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Lei Dong on 2018/6/28.
- */
-public class MusicPlayActivity extends BaseActivity {
-    private static final String TAG = MusicPlayActivity.class.getSimpleName();
+public class ChannelPlayActivity extends BaseActivity {
+    private static final String TAG = ChannelPlayActivity.class.getSimpleName();
 
     @BindView(R.id.playerview)
     IjkPlayerView mPlayerView;
 
-    private Music mCurrentMusic = null;
+    private Channel mCurrentChannel = null;
 
     @Override
     protected int bindLayout() {
@@ -39,13 +36,13 @@ public class MusicPlayActivity extends BaseActivity {
      */
     private void obtainCurrentMusic() {
         Intent intent = getIntent();
-        mCurrentMusic = (Music) intent.getSerializableExtra("currentMusic");
+        mCurrentChannel = (Channel) intent.getSerializableExtra("currentChannel");
     }
 
     @Override
     public void initActions() {
-        String musicPath = mCurrentMusic.getPath();
-        Uri mUri = Uri.parse(musicPath);
+        String channelPath = mCurrentChannel.getSourcePath();
+        Uri mUri = Uri.parse(channelPath);
 
         mPlayerView.init()
                 .setVideoPath(mUri)

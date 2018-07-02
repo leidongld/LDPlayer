@@ -1,9 +1,11 @@
 package com.example.leidong.ldplayer.beans;
 
+import java.io.Serializable;
+
 /**
  * Created by Lei Dong on 2018/6/24.
  */
-public class Bann {
+public class Bann implements Serializable {
     private int id;
 
     private String bannerName;

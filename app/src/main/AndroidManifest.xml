@@ -17,7 +17,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <!-- 欢迎界面 -->
-        <activity android:name=".ui.SplashActivity"
+        <activity
+            android:name=".ui.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +26,9 @@
             </intent-filter>
         </activity>
 
-        <!--IjkPlayerTest界面-->
+        <!-- IjkPlayerTest界面 -->
         <activity android:name=".ui.TestIjkPlayerActivity">
+
         </activity>
 
         <!-- 主界面 -->
@@ -53,29 +55,34 @@
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
-        <!--网络音乐列表界面-->
-        <activity android:name=".ui.SubInternetMusicActivity"
+        <!-- 网络音乐列表界面 -->
+        <activity
+            android:name=".ui.SubInternetMusicActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
 
-        <!--网络视频列表界面-->
-        <activity android:name=".ui.SubInternetVideoActivity"
+        <!-- 网络视频列表界面 -->
+        <activity
+            android:name=".ui.SubInternetVideoActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
 
-        <!--音乐播放界面-->
-        <activity android:name=".ui.MusicPlayActivity"
+        <!-- 音乐播放界面 -->
+        <activity
+            android:name=".ui.MusicPlayActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
 
-        <!--视频播放界面-->
-        <activity android:name=".ui.VideoPlayActivity"
+        <!-- 视频播放界面 -->
+        <activity
+            android:name=".ui.VideoPlayActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape" />
+
+        <!--频道播放界面-->
+        <activity android:name=".ui.ChannelPlayActivity"
+            android:screenOrientation="landscape"
+            android:launchMode="singleInstance"/>
     </application>
 
 </manifest>

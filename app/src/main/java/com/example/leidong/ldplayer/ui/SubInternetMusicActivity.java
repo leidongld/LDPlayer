@@ -5,16 +5,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.example.leidong.ldplayer.MyApplication;
 import com.example.leidong.ldplayer.R;
 import com.example.leidong.ldplayer.adapters.SubInternetMusicAdapter;
 import com.example.leidong.ldplayer.beans.Music;
 import com.example.leidong.ldplayer.utils.DataUtils;
-
 import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

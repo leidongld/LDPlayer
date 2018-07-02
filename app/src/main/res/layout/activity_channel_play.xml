@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LineartLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.ChannelPlayActivity"
+    android:orientation="vertical">
     <com.dl7.player.media.IjkPlayerView
         android:id="@+id/playerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</LinearLayout>
+</LineartLayout>
