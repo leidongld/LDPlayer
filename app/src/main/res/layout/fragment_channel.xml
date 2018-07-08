@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/channel_top_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_margin="3dp">
+        <TextView
+            android:id="@+id/tv_channel_cctv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="央 视"
+            android:textColor="@drawable/top_bar_text_color_selector"
+            android:layout_weight="1"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tv_channel_satellite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="卫 视"
+            android:textColor="@drawable/top_bar_text_color_selector"
+            android:layout_weight="1"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tv_channel_movie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电 影"
+            android:textColor="@drawable/top_bar_text_color_selector"
+            android:layout_weight="1"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tv_channel_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="美 食"
+            android:textColor="@drawable/top_bar_text_color_selector"
+            android:layout_weight="1"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/channel_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

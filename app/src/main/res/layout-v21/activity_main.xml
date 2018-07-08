@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity"
+    android:orientation="vertical">
+
+    <!--上方标题栏-->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_main"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        
+    </android.support.v7.widget.Toolbar>
+
+    <!--中间主要内容-->
+    <FrameLayout
+        android:id="@+id/fl_main_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineColor"/>
+
+    <!--下方Bottom Bar-->
+    <RadioGroup
+        android:id="@+id/rg_button_tag"
+        android:padding="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:gravity="center_vertical">
+        <RadioButton
+            android:id="@+id/rbt_video"
+            android:text="视频"
+            android:drawableTop="@drawable/rbt_video_drawable_selector"
+            style="@style/bottom_tag_style"/>
+        <RadioButton
+            android:id="@+id/rbt_music"
+            android:text="音乐"
+            android:drawableTop="@drawable/rbt_music_drawable_selector"
+            style="@style/bottom_tag_style"/>
+        <RadioButton
+            android:id="@+id/rbt_channel"
+            android:text="直播"
+            android:drawableTop="@drawable/rbt_channel_drawable_selector"
+            style="@style/bottom_tag_style"/>
+        <RadioButton
+            android:id="@+id/rbt_me"
+            android:text="我的"
+            android:drawableTop="@drawable/rbt_me_drawable_selector"
+            style="@style/bottom_tag_style"/>
+    </RadioGroup>
+
+</LinearLayout>
