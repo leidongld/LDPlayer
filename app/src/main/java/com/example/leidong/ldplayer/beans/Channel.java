@@ -16,18 +16,18 @@ public class Channel  implements Serializable {
 
     private String imagePath;
 
-    private String desc;
+    private String detail;
 
     public Channel() {
     }
 
-    public Channel(int id, int categoryId, String name, String sourcePath, String imagePath, String desc) {
+    public Channel(int id, int categoryId, String name, String sourcePath, String imagePath, String detail) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;
         this.sourcePath = sourcePath;
         this.imagePath = imagePath;
-        this.desc = desc;
+        this.detail = detail;
     }
 
     public int getId() {
@@ -70,11 +70,11 @@ public class Channel  implements Serializable {
         this.imagePath = imagePath;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDetail(String desc) {
+        this.detail = desc;
     }
 }

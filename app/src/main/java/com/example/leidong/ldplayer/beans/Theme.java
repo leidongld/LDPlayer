@@ -10,17 +10,17 @@ public class Theme implements Serializable {
 
     private String name;
 
-    private String desc;
+    private String detail;
 
     private String imagePath;
 
     public Theme() {
     }
 
-    public Theme(int id, String name, String desc, String imagePath) {
+    public Theme(int id, String name, String detail, String imagePath) {
         this.id = id;
         this.name = name;
-        this.desc = desc;
+        this.detail = detail;
         this.imagePath = imagePath;
     }
 
@@ -40,12 +40,12 @@ public class Theme implements Serializable {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDetail(String desc) {
+        this.detail = detail;
     }
 
     public String getImagePath() {
@@ -61,7 +61,7 @@ public class Theme implements Serializable {
         return "Theme{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", desc='" + desc + '\'' +
+                ", desc='" + detail + '\'' +
                 ", imagePath='" + imagePath + '\'' +
                 '}';
     }
