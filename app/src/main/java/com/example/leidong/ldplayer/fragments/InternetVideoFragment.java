@@ -20,6 +20,9 @@ import com.example.leidong.ldplayer.beans.Bann;
 import com.example.leidong.ldplayer.beans.Theme;
 import com.example.leidong.ldplayer.ui.SubInternetVideoActivity;
 import com.example.leidong.ldplayer.utils.DataUtils;
+import com.example.leidong.webhero.callback.WebHeroCallback;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -69,9 +72,7 @@ public class InternetVideoFragment extends Fragment implements OnBannerListener 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         configBanner();
-
         configThemes();
     }
 
@@ -81,10 +82,15 @@ public class InternetVideoFragment extends Fragment implements OnBannerListener 
     private void configThemes() {
         themesList = new ArrayList<>();
 
-        DataUtils.loadThemes(themesList);
-
-        mRecyclerview.setLayoutManager(new GridLayoutManager(MyApplication.getContext(), 2));
-        mRecyclerview.setAdapter(new ThemeAdapter(MyApplication.getContext(), themesList));
+        DataUtils.loadThemes(new WebHeroCallback() {
+            @Override
+            public void onSuccess(String content) {
+                Gson gson = new Gson();
+                themesList = gson.fromJson(content, new TypeToken<ArrayList<Theme>>(){}.getType());
+                mRecyclerview.setLayoutManager(new GridLayoutManager(MyApplication.getContext(), 2));
+                mRecyclerview.setAdapter(new ThemeAdapter(MyApplication.getContext(), themesList));
+            }
+        });
     }
 
     /**
@@ -95,13 +101,22 @@ public class InternetVideoFragment extends Fragment implements OnBannerListener 
         bannerImagePaths = new ArrayList<>();
         bannerNames = new ArrayList<>();
 
-        DataUtils.loadInternetVideoBanners(bannersList);
+        DataUtils.loadInternetVideoBanners(new WebHeroCallback() {
+            @Override
+            public void onSuccess(String content) {
+                Gson gson = new Gson();
+                bannersList = gson.fromJson(content, new TypeToken<ArrayList<Bann>>(){}.getType());
+                initBannerImagePaths();
+                initBannerNames();
+                showBanners();
+            }
+        });
+    }
 
-        for (int i = 0; i < bannersList.size(); i++) {
-            bannerImagePaths.add(bannersList.get(i).getBannerImagePath());
-            bannerNames.add(bannersList.get(i).getBannerName());
-        }
-
+    /**
+     * 展示Banners
+     */
+    private void showBanners() {
         //设置内置样式，共有六种可以点入方法内逐一体验使用。
         mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
         //设置图片加载器，图片加载器在下方
@@ -122,6 +137,24 @@ public class InternetVideoFragment extends Fragment implements OnBannerListener 
                 .setOnBannerListener(this)
                 //必须最后调用的方法，启动轮播图。
                 .start();
+    }
+
+    /**
+     * 填充Banner的名称
+     */
+    private void initBannerNames() {
+        for (int i = 0; i < bannersList.size(); i++) {
+            bannerNames.add(bannersList.get(i).getBannerName());
+        }
+    }
+
+    /**
+     * 填充Banner的图片路径
+     */
+    private void initBannerImagePaths() {
+        for (int i = 0; i < bannersList.size(); i++) {
+            bannerImagePaths.add(bannersList.get(i).getBannerImagePath());
+        }
     }
 
     @Override

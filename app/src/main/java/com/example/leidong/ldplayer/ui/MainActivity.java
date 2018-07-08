@@ -15,13 +15,11 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 import com.example.leidong.ldplayer.R;
 import com.example.leidong.ldplayer.fragments.ChannelFragment;
 import com.example.leidong.ldplayer.fragments.MeFragment;
 import com.example.leidong.ldplayer.fragments.MusicFragment;
 import com.example.leidong.ldplayer.fragments.VideoFragment;
-
 import butterknife.BindView;
 
 /**

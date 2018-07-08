@@ -21,6 +21,9 @@ import com.example.leidong.ldplayer.beans.Artist;
 import com.example.leidong.ldplayer.beans.Bann;
 import com.example.leidong.ldplayer.ui.SubInternetMusicActivity;
 import com.example.leidong.ldplayer.utils.DataUtils;
+import com.example.leidong.webhero.callback.WebHeroCallback;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -72,9 +75,7 @@ public class InternetMusicFragment extends Fragment implements OnBannerListener 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         configBanner();
-
         configArtists();
     }
 
@@ -85,10 +86,15 @@ public class InternetMusicFragment extends Fragment implements OnBannerListener 
     private void configArtists() {
         artistsList = new ArrayList<>();
 
-        DataUtils.loadArtists(artistsList);
-
-        mRecyclerview.setLayoutManager(new GridLayoutManager(MyApplication.getContext(), 2));
-        mRecyclerview.setAdapter(new ArtistsAdapter(MyApplication.getContext(), artistsList));
+        DataUtils.loadArtists(new WebHeroCallback() {
+            @Override
+            public void onSuccess(String content) {
+                Gson gson = new Gson();
+                artistsList = gson.fromJson(content, new TypeToken<ArrayList<Artist>>(){}.getType());
+                mRecyclerview.setLayoutManager(new GridLayoutManager(MyApplication.getContext(), 2));
+                mRecyclerview.setAdapter(new ArtistsAdapter(MyApplication.getContext(), artistsList));
+            }
+        });
     }
 
     /**
@@ -99,13 +105,22 @@ public class InternetMusicFragment extends Fragment implements OnBannerListener 
         bannerImagePaths = new ArrayList<>();
         bannerNames = new ArrayList<>();
 
-        DataUtils.loadInternetMusicBanners(bannersList);
+        DataUtils.loadInternetMusicBanners(new WebHeroCallback() {
+            @Override
+            public void onSuccess(String content) {
+                Gson gson = new Gson();
+                bannersList = gson.fromJson(content, new TypeToken<ArrayList<Bann>>(){}.getType());
+                initBannerImagePaths();
+                initBannerNames();
+                showBanners();
+            }
+        });
+    }
 
-        for (int i = 0; i < bannersList.size(); i++) {
-            bannerImagePaths.add(bannersList.get(i).getBannerImagePath());
-            bannerNames.add(bannersList.get(i).getBannerName());
-        }
-
+    /**
+     * 展示Banner
+     */
+    private void showBanners() {
         //设置内置样式，共有六种可以点入方法内逐一体验使用。
         mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
         //设置图片加载器，图片加载器在下方
@@ -127,6 +142,25 @@ public class InternetMusicFragment extends Fragment implements OnBannerListener 
                 //必须最后调用的方法，启动轮播图。
                 .start();
     }
+
+    /**
+     * 初始化Banner的名称
+     */
+    private void initBannerNames() {
+        for (int i = 0; i < bannersList.size(); i++) {
+            bannerNames.add(bannersList.get(i).getBannerName());
+        }
+    }
+
+    /**
+     * 初始化Banner的图片路径
+     */
+    private void initBannerImagePaths() {
+        for (int i = 0; i < bannersList.size(); i++) {
+            bannerImagePaths.add(bannersList.get(i).getBannerImagePath());
+        }
+    }
+
 
     @Override
     public void OnBannerClick(int position) {

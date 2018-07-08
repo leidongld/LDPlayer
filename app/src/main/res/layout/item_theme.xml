@@ -29,7 +29,7 @@
         android:id="@+id/theme_desc"
         android:text="主题介绍"
         android:textStyle="italic"
-        android:textSize="14sp"
+        android:textSize="11sp"
         android:textColor="@color/colorWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -46,7 +46,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ThemeAdapter.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.themeName.setText(themesArray[position].getName());
-        holder.themeDesc.setText(themesArray[position].getDesc());
+        holder.themeDesc.setText(themesArray[position].getDetail());
         Glide.with(context).load(themesArray[position].getImagePath()).into(holder.background);
 
         holder.themeItem.setOnClickListener(new View.OnClickListener() {

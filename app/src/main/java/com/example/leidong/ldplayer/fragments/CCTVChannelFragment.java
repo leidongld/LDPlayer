@@ -55,6 +55,7 @@ public class CCTVChannelFragment extends Fragment {
 
         initWidgets();
 
+
     }
 
     private void initWidgets() {

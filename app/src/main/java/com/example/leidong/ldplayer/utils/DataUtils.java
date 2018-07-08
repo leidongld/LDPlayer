@@ -1,13 +1,15 @@
 package com.example.leidong.ldplayer.utils;
 
-import com.example.leidong.ldplayer.beans.Artist;
-import com.example.leidong.ldplayer.beans.Bann;
 import com.example.leidong.ldplayer.beans.Channel;
 import com.example.leidong.ldplayer.beans.Music;
-import com.example.leidong.ldplayer.beans.Theme;
 import com.example.leidong.ldplayer.beans.Video;
+import com.example.leidong.webhero.WebConstants;
+import com.example.leidong.webhero.WebHeroClient;
+import com.example.leidong.webhero.callback.ISuccess;
+import com.example.leidong.webhero.callback.WebHeroCallback;
 
 import java.util.ArrayList;
+
 /**
  * Created by Lei Dong on 2018/6/25.
  */
@@ -15,192 +17,75 @@ public class DataUtils {
     /**
      * 填充艺术家信息
      *
-     * @param artistsList
+     * @param callback
      */
-    public static void loadArtists(ArrayList<Artist> artistsList) {
-        artistsList.add(new Artist(
-                1,
-                "陈奕迅",
-                278,
-                "陈奕迅简介",
-                "https://y.gtimg.cn/music/photo_new/T001R300x300M000003Nz2So3XXYek.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                2,
-                "邓紫棋",
-                421,
-                "邓紫棋简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000001fNHEf1SFEFN.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                3,
-                "薛之谦",
-                166,
-                "薛之谦简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000002J4UUk29y8BY.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                4,
-                "林俊杰",
-                207,
-                "林俊杰简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000001BLpXF2DyJe2.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                5,
-                "孙燕姿",
-                519,
-                "孙燕姿简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000001pWERg3vFgg8.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                6,
-                "刘惜君",
-                62,
-                "刘惜君简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000003x77MM2iIg6c.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                7,
-                "李荣浩",
-                173,
-                "李荣浩简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000000aHmbL2aPXWH.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                8,
-                "刘瑞琦",
-                48,
-                "刘瑞琦简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000003bQEFA3KrvLI.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                9,
-                "林忆莲",
-                140,
-                "林忆莲简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000002u0TJy47WWOj.jpg?max_age=2592000"));
-        artistsList.add(new Artist(
-                10,
-                "张靓颖",
-                120,
-                "张靓颖简介",
-                "https://y.gtimg.cn/music/photo_new/T001R150x150M000000aw4WC2EQYTv.jpg?max_age=2592000"));
+    public static void loadArtists(final WebHeroCallback callback) {
+        WebHeroClient.builder()
+                .url(WebConstants.BASE_URL + WebConstants.ARTISTS_SUB_URL)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String body) {
+                        callback.onSuccess(body);
+                    }
+                })
+                .build()
+                .get();
     }
 
 
     /**
      * 填充主题
      *
-     * @param themesList
+     * @param callback
      */
-    public static void loadThemes(ArrayList<Theme> themesList) {
-        themesList.add(new Theme(
-                1,
-                "热门",
-                "Hot",
-                "https://images.pexels.com/photos/266642/pexels-photo-266642.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                2,
-                "RMHD",
-                "RMHD",
-                "https://images.pexels.com/photos/681335/pexels-photo-681335.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                3,
-                "创意",
-                "Creativity",
-                "https://images.pexels.com/photos/171198/pexels-photo-171198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                4,
-                "励志",
-                "Encouragement",
-                "https://images.pexels.com/photos/6469/red-hands-woman-creative.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                5,
-                "搞笑",
-                "Funny",
-                "https://images.pexels.com/photos/160846/french-bulldog-summer-smile-joy-160846.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                6,
-                "广告",
-                "Advertise",
-                "https://images.pexels.com/photos/632470/pexels-photo-632470.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                7,
-                "旅行",
-                "Travel",
-                "https://images.pexels.com/photos/185933/pexels-photo-185933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                8,
-                "剧情",
-                "Story",
-                "https://images.pexels.com/photos/20967/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                9,
-                "爱情",
-                "Love",
-                "https://images.pexels.com/photos/236275/pexels-photo-236275.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                10,
-                "运动",
-                "Sport",
-                "https://images.pexels.com/photos/1092883/pexels-photo-1092883.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                11,
-                "音乐",
-                "Music",
-                "https://images.pexels.com/photos/6966/abstract-music-rock-bw.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                12,
-                "科幻",
-                "Science Fiction",
-                "https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-        themesList.add(new Theme(
-                13,
-                "预告",
-                "Advance",
-                "https://images.pexels.com/photos/20967/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350"));
-
+    public static void loadThemes(final WebHeroCallback callback) {
+        WebHeroClient.builder()
+                .url(WebConstants.BASE_URL + WebConstants.THEMES_SUB_URL)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String body) {
+                        callback.onSuccess(body);
+                    }
+                })
+                .build()
+                .get();
     }
 
     /**
      * 加载网络音乐界面的Banner
      *
-     * @param bannersList
+     * @param callback
      */
-    public static void loadInternetMusicBanners(ArrayList<Bann> bannersList) {
-        bannersList.add(new Bann(
-                1,
-                "音乐1",
-                "https://images.pexels.com/photos/33597/guitar-classical-guitar-acoustic-guitar-electric-guitar.jpg?auto=compress&cs=tinysrgb&h=350"));
-        bannersList.add(new Bann(
-                2,
-                "音乐2",
-                "https://images.pexels.com/photos/111287/pexels-photo-111287.jpeg?auto=compress&cs=tinysrgb&h=350"));
-        bannersList.add(new Bann(
-                3,
-                "音乐3",
-                "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&h=350"));
-        bannersList.add(new Bann(
-                4,
-                "音乐4",
-                "https://images.pexels.com/photos/625644/pexels-photo-625644.jpeg?auto=compress&cs=tinysrgb&h=350"));
+    public static void loadInternetMusicBanners(final WebHeroCallback callback) {
+        WebHeroClient.builder()
+                .url(WebConstants.BASE_URL + WebConstants.BANNERS_SUB_URL + "/2")
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String body) {
+                        callback.onSuccess(body);
+                    }
+                })
+                .build()
+                .get();
     }
 
     /**
      * 加载网络视频界面的Banner
      *
-     * @param bannersList
+     * @param webHeroCallback
      */
-    public static void loadInternetVideoBanners(ArrayList<Bann> bannersList) {
-        bannersList.add(new Bann(
-                1,
-                "主题1",
-                "https://images.pexels.com/photos/163077/mario-yoschi-figures-funny-163077.jpeg?auto=compress&cs=tinysrgb&h=350"));
-        bannersList.add(new Bann(
-                2,
-                "主题2",
-                "https://images.pexels.com/photos/42415/pexels-photo-42415.jpeg?auto=compress&cs=tinysrgb&h=350"));
-        bannersList.add(new Bann(
-                3,
-                "主题3",
-                "https://images.pexels.com/photos/187069/pexels-photo-187069.jpeg?auto=compress&cs=tinysrgb&h=350"));
-        bannersList.add(new Bann(
-                4,
-                "主题4",
-                "https://images.pexels.com/photos/289831/pexels-photo-289831.jpeg?auto=compress&cs=tinysrgb&h=350"));
+    public static void loadInternetVideoBanners(final WebHeroCallback webHeroCallback) {
+        WebHeroClient.builder()
+                .url(WebConstants.BASE_URL + WebConstants.BANNERS_SUB_URL + "/1")
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String body) {
+                        webHeroCallback.onSuccess(body);
+                    }
+                })
+                .build()
+                .get();
+
     }
 
     /**
@@ -216,21 +101,21 @@ public class DataUtils {
                 "陈奕迅",
                 1,
                 "十年",
-                "www",
+                "http://www.ytmp3.cn/?down/44686.mp3",
                 0,
                 0,
-                "www"));
+                ""));
         musicsList.add(new Music(
                 2,
                 false,
                 "好久不见",
                 "陈奕迅",
                 1,
-                "豪杰不见",
-                "www",
+                "好久不见",
+                "http://www.ytmp3.cn/?down/45024.mp3",
                 0,
                 0,
-                "www"));
+                ""));
         musicsList.add(new Music(
                 3,
                 false,
@@ -238,10 +123,10 @@ public class DataUtils {
                 "陈奕迅",
                 1,
                 "红玫瑰",
-                "www",
+                "http://www.ytmp3.cn/?down/39616.mp3",
                 0,
                 0,
-                "www"));
+                ""));
         musicsList.add(new Music(
                 4,
                 false,
@@ -249,18 +134,18 @@ public class DataUtils {
                 "陈奕迅",
                 1,
                 "K歌之王",
-                "www",
+                "http://www.ytmp3.cn/?down/40686.mp3",
                 0,
                 0,
                 "www"));
         musicsList.add(new Music(
                 5,
                 false,
-                "在这个世界相遇",
+                "苦瓜",
                 "陈奕迅",
                 1,
-                "在这个世界相遇",
-                "www",
+                "苦瓜",
+                "http://www.ytmp3.cn/?down/45069.mp3",
                 0,
                 0,
                 "www"));
@@ -271,7 +156,7 @@ public class DataUtils {
                 "陈奕迅",
                 1,
                 "因为爱情",
-                "www",
+                "http://www.ytmp3.cn/?down/39618.mp3",
                 0,
                 0,
                 "www"));
@@ -356,7 +241,7 @@ public class DataUtils {
                 1,
                 1,
                 "CCTV1",
-                "sourcePath",
+                "http://223.110.243.136/PLTV/3/224/3221227206/index.m3u8",
                 "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
                 ""
         ));
@@ -364,87 +249,87 @@ public class DataUtils {
                 2,
                 1,
                 "CCTV2",
-                "sourcePath",
+                "http://audio.live.cntv.dnion.com/cache/204_/seg0/index.m3u8",
                 "https://images.pexels.com/photos/194511/pexels-photo-194511.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
                 ""
         ));
         channelsList.add(new Channel(
                 3,
                 1,
-                "CCTV3",
-                "sourcePath",
+                "CCTV4",
+                "http://audio.live.cntv.dnion.com/cache/19_/seg0/index.m3u8",
                 "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
                 ""
         ));
         channelsList.add(new Channel(
                 4,
                 1,
-                "CCTV4",
-                "sourcePath",
+                "CCTV6",
+                "http://audio.live.cntv.dnion.com/cache/219_/seg0/index.m3u8",
                 "https://images.pexels.com/photos/591652/play-fun-blocks-block-591652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
                 ""
         ));
         channelsList.add(new Channel(
                 5,
                 1,
-                "CCTV5",
-                "sourcePath",
+                "CCTV7",
+                "http://audio.live.cntv.dnion.com/cache/224_/seg0/index.m3u8",
                 "https://images.pexels.com/photos/756439/pexels-photo-756439.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
                 ""
         ));
         channelsList.add(new Channel(
                 6,
                 1,
-                "CCTV6",
-                "sourcePath",
+                "CCTV9",
+                "http://audio.live.cntv.dnion.com/cache/294_/seg0/index.m3u8",
                 "https://images.pexels.com/photos/776092/pexels-photo-776092.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
                 ""
         ));
         channelsList.add(new Channel(
                 7,
                 1,
-                "CCTV7",
-                "sourcePath",
+                "CCTV10",
+                "http://audio.live.cntv.dnion.com/cache/234_/seg0/index.m3u8",
                 "https://images.pexels.com/photos/209600/pexels-photo-209600.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
                 ""
         ));
         channelsList.add(new Channel(
                 8,
                 1,
-                "CCTV8",
-                "sourcePath",
+                "CCTV11",
+                "http://audio.live.cntv.dnion.com/cache/239_/seg0/index.m3u8",
                 "https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
                 ""
         ));
         channelsList.add(new Channel(
                 9,
                 1,
-                "CCTV9",
-                "sourcePath",
+                "CCTV12",
+                "http://audio.live.cntv.dnion.com/cache/244_/seg0/index.m3u8",
                 "https://images.pexels.com/photos/168866/pexels-photo-168866.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
                 ""
         ));
         channelsList.add(new Channel(
                 10,
                 1,
-                "CCTV10",
-                "sourcePath",
+                "CCTV13",
+                "http://116.66.222.46:8082/TV4020.m3u8",
                 "https://images.pexels.com/photos/163828/poker-game-play-gambling-163828.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
                 ""
         ));
         channelsList.add(new Channel(
                 1,
                 1,
-                "CCTV1",
-                "sourcePath",
+                "CCTV14",
+                "http://audio.live.cntv.dnion.com/cache/249_/seg0/index.m3u8",
                 "",
                 ""
         ));
         channelsList.add(new Channel(
                 11,
                 1,
-                "CCTV11",
-                "sourcePath",
+                "CCTV15",
+                "http://audio.live.cntv.dnion.com/cache/254_/seg0/index.m3u8",
                 "https://images.pexels.com/photos/1011334/pexels-photo-1011334.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
                 ""
         ));
@@ -540,7 +425,7 @@ public class DataUtils {
                 1,
                 1,
                 "电影1",
-                "sourcePath",
+                "http://183.207.249.15/PLTV/3/224/3221225529/index.m3u8",
                 "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one.jpg",
                 ""
         ));
@@ -548,7 +433,7 @@ public class DataUtils {
                 2,
                 1,
                 "电影2",
-                "sourcePath",
+                "http://183.207.249.15/PLTV/3/224/3221225547/index.m3u8",
                 "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-001.jpg",
                 ""
         ));
@@ -556,7 +441,7 @@ public class DataUtils {
                 3,
                 1,
                 "电影3",
-                "sourcePath",
+                "http://dlhls.cdn.zhanqi.tv/zqlive/7032_0s2qn.m3u8",
                 "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-002.jpg",
                 ""
         ));
@@ -564,7 +449,7 @@ public class DataUtils {
                 4,
                 1,
                 "电影4",
-                "sourcePath",
+                "http://183.207.249.15/PLTV/3/224/3221225531/index.m3u8",
                 "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-003.jpg",
                 ""
         ));
@@ -572,7 +457,7 @@ public class DataUtils {
                 5,
                 1,
                 "电影5",
-                "sourcePath",
+                "http://dlhls.cdn.zhanqi.tv/zqlive/35180_KUDhx.m3u8",
                 "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-004.jpg",
                 ""
         ));
@@ -580,7 +465,7 @@ public class DataUtils {
                 6,
                 1,
                 "电影6",
-                "sourcePath",
+                "http://dlhls.cdn.zhanqi.tv/zqlive/35349_iXsXw.m3u8",
                 "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-005.jpg",
                 ""
         ));
@@ -588,7 +473,7 @@ public class DataUtils {
                 7,
                 1,
                 "电影7",
-                "sourcePath",
+                "http://dlhls.cdn.zhanqi.tv/zqlive/53346_ESoth.m3u8",
                 "http://img.ivsky.com/img/bizhi/pre/201804/18/ready_player_one-006.jpg",
                 ""
         ));

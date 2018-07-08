@@ -60,7 +60,7 @@ public class MovieChannelFragment extends Fragment {
      *
      */
     private void initWidgets() {
-       configMovieChannels();
+        configMovieChannels();
 
         mRecyclerview.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
         mRecyclerview.setAdapter(new ChannelAdapter(MyApplication.getContext(), channelsList));

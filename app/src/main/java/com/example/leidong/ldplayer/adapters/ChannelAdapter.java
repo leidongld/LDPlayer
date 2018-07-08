@@ -2,6 +2,7 @@ package com.example.leidong.ldplayer.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.leidong.ldplayer.R;
 import com.example.leidong.ldplayer.beans.Channel;
+import com.example.leidong.ldplayer.ui.ChannelPlayActivity;
 
 import java.util.ArrayList;
 
@@ -49,7 +50,10 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.ViewHold
         holder.channelItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, ChannelPlayActivity.class);
+                intent.putExtra("currentChannel", channelsArray[position]);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
     }

@@ -1,24 +1,26 @@
 package com.example.leidong.ldplayer.beans;
 
+import java.io.Serializable;
+
 /**
  * Created by Lei Dong on 2018/6/24.
  */
-public class Theme {
+public class Theme implements Serializable {
     private int id;
 
     private String name;
 
-    private String desc;
+    private String detail;
 
     private String imagePath;
 
     public Theme() {
     }
 
-    public Theme(int id, String name, String desc, String imagePath) {
+    public Theme(int id, String name, String detail, String imagePath) {
         this.id = id;
         this.name = name;
-        this.desc = desc;
+        this.detail = detail;
         this.imagePath = imagePath;
     }
 
@@ -38,12 +40,12 @@ public class Theme {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDetail(String desc) {
+        this.detail = detail;
     }
 
     public String getImagePath() {
@@ -59,7 +61,7 @@ public class Theme {
         return "Theme{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", desc='" + desc + '\'' +
+                ", desc='" + detail + '\'' +
                 ", imagePath='" + imagePath + '\'' +
                 '}';
     }
