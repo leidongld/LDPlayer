@@ -74,7 +74,7 @@ public class LocalFileManager {
 
                 Music music = new Music();
                 music.setId(0);
-                music.setLocal(true);
+                music.setLocal(1);
                 music.setName(name);
                 music.setArtist(artist);
                 music.setAlbum(album);
@@ -123,7 +123,7 @@ public class LocalFileManager {
 
                 Video video = new Video();
                 video.setName(name);
-                video.setLocal(true);
+                video.setLocal(1);
                 video.setPath(path);
                 video.setResolution(resolution);
                 video.setSize(size);

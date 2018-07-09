@@ -1,8 +1,6 @@
 package com.example.leidong.ldplayer.utils;
 
 import com.example.leidong.ldplayer.beans.Channel;
-import com.example.leidong.ldplayer.beans.Music;
-import com.example.leidong.ldplayer.beans.Video;
 import com.example.leidong.webhero.WebConstants;
 import com.example.leidong.webhero.WebHeroClient;
 import com.example.leidong.webhero.callback.ISuccess;
@@ -91,143 +89,37 @@ public class DataUtils {
     /**
      * 加载网络音乐
      *
-     * @param musicsList
+     * @param callback
      */
-    public static void loadMusics(ArrayList<Music> musicsList) {
-        musicsList.add(new Music(
-                1,
-                false,
-                "十年",
-                "陈奕迅",
-                1,
-                "十年",
-                "http://www.ytmp3.cn/?down/44686.mp3",
-                0,
-                0,
-                ""));
-        musicsList.add(new Music(
-                2,
-                false,
-                "好久不见",
-                "陈奕迅",
-                1,
-                "好久不见",
-                "http://www.ytmp3.cn/?down/45024.mp3",
-                0,
-                0,
-                ""));
-        musicsList.add(new Music(
-                3,
-                false,
-                "红玫瑰",
-                "陈奕迅",
-                1,
-                "红玫瑰",
-                "http://www.ytmp3.cn/?down/39616.mp3",
-                0,
-                0,
-                ""));
-        musicsList.add(new Music(
-                4,
-                false,
-                "K歌之王",
-                "陈奕迅",
-                1,
-                "K歌之王",
-                "http://www.ytmp3.cn/?down/40686.mp3",
-                0,
-                0,
-                "www"));
-        musicsList.add(new Music(
-                5,
-                false,
-                "苦瓜",
-                "陈奕迅",
-                1,
-                "苦瓜",
-                "http://www.ytmp3.cn/?down/45069.mp3",
-                0,
-                0,
-                "www"));
-        musicsList.add(new Music(
-                6,
-                false,
-                "因为爱情",
-                "陈奕迅",
-                1,
-                "因为爱情",
-                "http://www.ytmp3.cn/?down/39618.mp3",
-                0,
-                0,
-                "www"));
+    public static void loadMusics(final WebHeroCallback callback) {
+        WebHeroClient.builder()
+                .url(WebConstants.BASE_URL + WebConstants.MUSICS_SUB_URL)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String body) {
+                       callback.onSuccess(body);
+                    }
+                })
+                .build()
+                .get();
     }
 
     /**
      * 加载视频数据
      *
-     * @param videosList
+     * @param callback
      */
-    public static void loadVideos(ArrayList<Video> videosList) {
-        videosList.add(new Video(
-                1,
-                false,
-                1,
-                "视频1",
-                "",
-                "",
-                100,
-                100,
-                100,
-                "https://images.pexels.com/photos/35799/summer-still-life-suitcase-in-field-grass-summer.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350"
-        ));
-        videosList.add(new Video(
-                2,
-                false,
-                1,
-                "视频2",
-                "",
-                "",
-                100,
-                100,
-                100,
-                "https://images.pexels.com/photos/733883/pexels-photo-733883.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
-        ));
-        videosList.add(new Video(
-                3,
-                false,
-                1,
-                "视频3",
-                "",
-                "",
-                100,
-                100,
-                100,
-                "https://images.pexels.com/photos/83932/pexels-photo-83932.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
-        ));
-        videosList.add(new Video(
-                4,
-                false,
-                1,
-                "视频4",
-                "",
-                "",
-                100,
-                100,
-                100,
-                "https://images.pexels.com/photos/635284/pexels-photo-635284.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
-        ));
-        videosList.add(new Video(
-                5,
-                false,
-                1,
-                "视频5",
-                "",
-                "",
-                100,
-                100,
-                100,
-                "https://images.pexels.com/photos/122734/pexels-photo-122734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
-        ));
+    public static void loadVideos(final WebHeroCallback callback) {
+        WebHeroClient.builder()
+                .url(WebConstants.BASE_URL + WebConstants.VIDEOS_SUB_URL)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String body) {
+                        callback.onSuccess(body);
+                    }
+                })
+                .build()
+                .get();
     }
 
 

@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Music implements Serializable {
     private int id;
 
-    private boolean isLocal;
+    private int isLocal;
 
     private String name;
 
@@ -29,7 +29,7 @@ public class Music implements Serializable {
     public Music() {
     }
 
-    public Music(int id, boolean isLocal, String name, String artist,int artistId, String album, String path, float duration, long size, String imagePath) {
+    public Music(int id, int isLocal, String name, String artist,int artistId, String album, String path, float duration, long size, String imagePath) {
         this.id = id;
         this.isLocal = isLocal;
         this.name = name;
@@ -50,11 +50,11 @@ public class Music implements Serializable {
         this.id = id;
     }
 
-    public boolean isLocal() {
+    public int isLocal() {
         return isLocal;
     }
 
-    public void setLocal(boolean local) {
+    public void setLocal(int local) {
         isLocal = local;
     }
 

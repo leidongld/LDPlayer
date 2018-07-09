@@ -12,6 +12,9 @@ import com.example.leidong.ldplayer.R;
 import com.example.leidong.ldplayer.adapters.SubInternetVideoAdapter;
 import com.example.leidong.ldplayer.beans.Video;
 import com.example.leidong.ldplayer.utils.DataUtils;
+import com.example.leidong.webhero.callback.WebHeroCallback;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
@@ -43,15 +46,6 @@ public class SubInternetVideoActivity extends BaseActivity {
     @Override
     public void initWidgets() {
         loadData();
-
-        Glide.with(SubInternetVideoActivity.this).load("https://images.pexels.com/photos/1103715/pexels-photo-1103715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350").into(mIvTopBackground);
-
-        mTvName.setText("热门");
-
-        mTvDesc.setText("这里有你想要的热门视频！");
-
-        mRecyclerview.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
-        mRecyclerview.setAdapter(new SubInternetVideoAdapter(MyApplication.getContext(), videosList));
     }
 
     /**
@@ -59,7 +53,22 @@ public class SubInternetVideoActivity extends BaseActivity {
      *
      */
     private void loadData() {
-        DataUtils.loadVideos(videosList);
+        DataUtils.loadVideos(new WebHeroCallback() {
+            @Override
+            public void onSuccess(String content) {
+                Gson gson = new Gson();
+                videosList = gson.fromJson(content, new TypeToken<ArrayList<Video>>(){}.getType());
+
+                Glide.with(SubInternetVideoActivity.this).load("https://images.pexels.com/photos/1103715/pexels-photo-1103715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350").into(mIvTopBackground);
+
+                mTvName.setText("热门");
+
+                mTvDesc.setText("这里有你想要的热门视频！");
+
+                mRecyclerview.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
+                mRecyclerview.setAdapter(new SubInternetVideoAdapter(MyApplication.getContext(), videosList));
+            }
+        });
     }
 
     @Override

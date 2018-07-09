@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Video  implements Serializable {
     private int id;
 
-    private boolean isLocal;
+    private int isLocal;
 
     private int themeId;
 
@@ -29,7 +29,7 @@ public class Video  implements Serializable {
     public Video() {
     }
 
-    public Video(int id, boolean isLocal,int themeId, String name,String path, String resolution, long size, long duration, long date, String imagePath) {
+    public Video(int id, int isLocal,int themeId, String name,String path, String resolution, long size, long duration, long date, String imagePath) {
         this.id = id;
         this.isLocal = isLocal;
         this.themeId = themeId;
@@ -50,11 +50,11 @@ public class Video  implements Serializable {
         this.id = id;
     }
 
-    public boolean isLocal() {
+    public int isLocal() {
         return isLocal;
     }
 
-    public void setLocal(boolean local) {
+    public void setLocal(int local) {
         isLocal = local;
     }
 
