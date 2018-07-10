@@ -15,6 +15,9 @@ import com.example.leidong.ldplayer.R;
 import com.example.leidong.ldplayer.adapters.ChannelAdapter;
 import com.example.leidong.ldplayer.beans.Channel;
 import com.example.leidong.ldplayer.utils.DataUtils;
+import com.example.leidong.webhero.callback.WebHeroCallback;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
@@ -62,16 +65,22 @@ public class SatelliteChannelFragment extends Fragment {
      */
     private void initWidgets() {
        configSatelliteChannels();
-
-        mRecyclerview.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
-        mRecyclerview.setAdapter(new ChannelAdapter(MyApplication.getContext(), channelsList));
     }
 
     /**
      *
      */
     private void configSatelliteChannels() {
-        DataUtils.loadSatelliteChannels(channelsList);
+        DataUtils.loadSatelliteChannels(new WebHeroCallback() {
+            @Override
+            public void onSuccess(String content) {
+                Gson gson = new Gson();
+                channelsList = gson.fromJson(content, new TypeToken<ArrayList<Channel>>(){}.getType());
+
+                mRecyclerview.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
+                mRecyclerview.setAdapter(new ChannelAdapter(MyApplication.getContext(), channelsList));
+            }
+        });
     }
 
     @Override
