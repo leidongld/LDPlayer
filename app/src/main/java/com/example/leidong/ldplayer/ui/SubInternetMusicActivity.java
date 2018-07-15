@@ -1,5 +1,6 @@
 package com.example.leidong.ldplayer.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,6 +39,12 @@ public class SubInternetMusicActivity extends BaseActivity {
 
     private ArrayList<Music> musicsList = new ArrayList<>();
 
+    private int mArtistId;
+    private String mArtistName;
+    private int mArtistSongNumber;
+    private String mArtistImagePath;
+    private String mArtistDetail;
+
     @Override
     protected int bindLayout() {
         return R.layout.activity_sub_internet_music;
@@ -45,26 +52,37 @@ public class SubInternetMusicActivity extends BaseActivity {
 
     @Override
     public void initWidgets() {
+        receiveDataFromIntent();
         loadData();
+    }
 
-
+    /**
+     * 从Intent中接收数据
+     */
+    private void receiveDataFromIntent() {
+        Intent intent = getIntent();
+        mArtistId = intent.getIntExtra("artistId", 0);
+        mArtistName = intent.getStringExtra("artistName");
+        mArtistSongNumber = intent.getIntExtra("artistSongNumber", 0);
+        mArtistImagePath = intent.getStringExtra("artistImagePath");
+        mArtistDetail = intent.getStringExtra("artistDetail");
     }
 
     /**
      * 加载数据
      */
     private void loadData() {
-        DataUtils.loadMusics(new WebHeroCallback() {
+        DataUtils.loadMusics(mArtistId ,new WebHeroCallback() {
             @Override
             public void onSuccess(String content) {
                 Gson gson = new Gson();
                 musicsList = gson.fromJson(content, new TypeToken<ArrayList<Music>>(){}.getType());
 
-                Glide.with(SubInternetMusicActivity.this).load("https://y.gtimg.cn/music/photo_new/T001R300x300M000003Nz2So3XXYek.jpg?max_age=2592000").into(mIvTopBackground);
+                Glide.with(SubInternetMusicActivity.this).load(mArtistImagePath).into(mIvTopBackground);
 
-                mTvName.setText("陈奕迅");
+                mTvName.setText(mArtistName);
 
-                mTvDesc.setText("代表作品：《爱情转移》、《十年》、《浮夸》、《k歌之王》");
+                mTvDesc.setText(mArtistDetail);
 
                 mRecyclerview.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
                 mRecyclerview.setAdapter(new SubInternetMusicAdapter(MyApplication.getContext(), musicsList));

@@ -1,13 +1,13 @@
-package com.example.leidong.ldplayer.utils;
+package com.example.leidong.foundation.webstatus;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
- * Created by Lei Dong on 2018/6/21.
+ * Created by Lei Dong on 2018/7/15.
  */
-public class NetUtils {
+public class WebStatusUtils {
     /**
      * 网络断开
      */

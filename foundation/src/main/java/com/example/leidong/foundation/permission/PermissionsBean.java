@@ -1,6 +1,4 @@
-package com.example.leidong.ldplayer.beans;
-
-import com.example.leidong.ldplayer.interfaces.OnPermissionsCheckListener;
+package com.example.leidong.foundation.permission;
 
 import java.util.HashMap;
 

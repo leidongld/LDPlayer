@@ -53,6 +53,10 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SubInternetVideoActivity.class);
+                intent.putExtra("themeId", position+1);
+                intent.putExtra("themeName", themesArray[position].getName());
+                intent.putExtra("themeImagePath", themesArray[position].getImagePath());
+                intent.putExtra("themeDetail", themesArray[position].getDetail());
                 context.startActivity(intent);
             }
         });

@@ -1,4 +1,4 @@
-package com.example.leidong.ldplayer.interfaces;
+package com.example.leidong.foundation.permission;
 
 import java.util.ArrayList;
 

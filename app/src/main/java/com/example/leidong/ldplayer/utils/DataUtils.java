@@ -86,11 +86,14 @@ public class DataUtils {
     /**
      * 加载网络音乐
      *
+     * @param artistId
      * @param callback
      */
-    public static void loadMusics(final WebHeroCallback callback) {
+    public static void loadMusics(int artistId, final WebHeroCallback callback) {
+        String url = artistId == 0 ? WebConstants.BASE_URL + WebConstants.MUSICS_SUB_URL
+                : WebConstants.BASE_URL + WebConstants.MUSICS_SUB_URL + "/" + artistId;
         WebHeroClient.builder()
-                .url(WebConstants.BASE_URL + WebConstants.MUSICS_SUB_URL)
+                .url(url)
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String body) {
@@ -104,11 +107,14 @@ public class DataUtils {
     /**
      * 加载视频数据
      *
+     * @param themeId
      * @param callback
      */
-    public static void loadVideos(final WebHeroCallback callback) {
+    public static void loadVideos(int themeId, final WebHeroCallback callback) {
+        String url = themeId == 0 ? WebConstants.BASE_URL + WebConstants.VIDEOS_SUB_URL
+                : WebConstants.BASE_URL + WebConstants.VIDEOS_SUB_URL + "/" + themeId;
         WebHeroClient.builder()
-                .url(WebConstants.BASE_URL + WebConstants.VIDEOS_SUB_URL)
+                .url(url)
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String body) {
@@ -126,8 +132,9 @@ public class DataUtils {
      * @param callback
      */
     public static void loadCCTVChannels(final WebHeroCallback callback) {
+        String url = WebConstants.BASE_URL + WebConstants.CHANNELS_SUB_URL + "/1";
         WebHeroClient.builder()
-                .url(WebConstants.BASE_URL + WebConstants.CHANNELS_SUB_URL + "/1")
+                .url(url)
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String body) {
@@ -144,8 +151,9 @@ public class DataUtils {
      * @param callback
      */
     public static void loadFoodChanels(final WebHeroCallback callback) {
+        String url = WebConstants.BASE_URL + WebConstants.CHANNELS_SUB_URL + "/4";
         WebHeroClient.builder()
-                .url(WebConstants.BASE_URL + WebConstants.CHANNELS_SUB_URL + "/4")
+                .url(url)
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String body) {
@@ -162,8 +170,9 @@ public class DataUtils {
      * @param callback
      */
     public static void loadMovieChannels(final WebHeroCallback callback) {
+        String url = WebConstants.BASE_URL + WebConstants.CHANNELS_SUB_URL + "/3";
         WebHeroClient.builder()
-                .url(WebConstants.BASE_URL + WebConstants.CHANNELS_SUB_URL + "/3")
+                .url(url)
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String body) {
@@ -180,8 +189,9 @@ public class DataUtils {
      * @param callback
      */
     public static void loadSatelliteChannels(final WebHeroCallback callback) {
+        String url = WebConstants.BASE_URL + WebConstants.CHANNELS_SUB_URL + "/2";
         WebHeroClient.builder()
-                .url(WebConstants.BASE_URL + WebConstants.CHANNELS_SUB_URL + "/2")
+                .url(url)
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String body) {

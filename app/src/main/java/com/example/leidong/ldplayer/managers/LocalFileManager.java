@@ -9,7 +9,7 @@ import android.provider.MediaStore;
 import com.example.leidong.ldplayer.MyApplication;
 import com.example.leidong.ldplayer.beans.Music;
 import com.example.leidong.ldplayer.beans.Video;
-import com.example.leidong.ldplayer.utils.FileUtils;
+import com.example.leidong.foundation.file.FileUtils;
 
 import java.util.ArrayList;
 
@@ -123,7 +123,7 @@ public class LocalFileManager {
 
                 Video video = new Video();
                 video.setName(name);
-                video.setLocal(1);
+                video.setIsLocal(1);
                 video.setPath(path);
                 video.setResolution(resolution);
                 video.setSize(size);

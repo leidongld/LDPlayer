@@ -1,1 +1,1 @@
-include ':app', ':webhero'
+include ':app', ':webhero', ':foundation'

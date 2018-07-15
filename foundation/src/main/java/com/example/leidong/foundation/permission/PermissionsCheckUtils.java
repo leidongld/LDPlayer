@@ -1,4 +1,4 @@
-package com.example.leidong.ldplayer.utils;
+package com.example.leidong.foundation.permission;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,17 +7,14 @@ import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-import com.example.leidong.ldplayer.beans.PermissionsBean;
-import com.example.leidong.ldplayer.interfaces.OnPermissionsCheckListener;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Created by Lei Dong on 2018/5/28.
+ * Created by Lei Dong on 2018/7/15.
  */
-public class PermissionsUtils {
+public class PermissionsCheckUtils {
     private static volatile int mRequestCode = 0;
 
     private static final int MAX_REQUEST_CODE = Short.MAX_VALUE;
@@ -140,10 +137,10 @@ public class PermissionsUtils {
                         && shouldShowRequestPermissionRationale(context, permission)) {
                     permissionsMap.put(permission, PERMISSION_DENIED_CAN_ASK_STATE);
                 }
-                else if(permissionState != PERMISSION_GRANTED_STATE
-                        && !shouldShowRequestPermissionRationale(context, permission)){
-                    permissionsMap.put(permission, PERMISSION_DENIED_NOT_ASK_STATE);
-                }
+//                else if(permissionState != PERMISSION_GRANTED_STATE
+//                        && !shouldShowRequestPermissionRationale(context, permission)){
+//                    permissionsMap.put(permission, PERMISSION_DENIED_NOT_ASK_STATE);
+//                }
             }
         }
         requestMultiPermissions(context, permissionsMap, onPermissionsCheckListener);

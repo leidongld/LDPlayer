@@ -1,5 +1,6 @@
 package com.example.leidong.ldplayer.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,6 +37,11 @@ public class SubInternetVideoActivity extends BaseActivity {
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerview;
 
+    private int mThemeId;
+    private String mThemeName;
+    private String mThemeImagePath;
+    private String mThemeDetail;
+
     private ArrayList<Video> videosList = new ArrayList<>();
 
     @Override
@@ -45,7 +51,19 @@ public class SubInternetVideoActivity extends BaseActivity {
 
     @Override
     public void initWidgets() {
+        receiveDataFromIntent();
         loadData();
+    }
+
+    /**
+     * 从上一级Intent接收数据
+     */
+    private void receiveDataFromIntent() {
+        Intent intent = getIntent();
+        mThemeId = intent.getIntExtra("themeId", 0);
+        mThemeName = intent.getStringExtra("themeName");
+        mThemeImagePath = intent.getStringExtra("themeImagePath");
+        mThemeDetail = intent.getStringExtra("themeDetail");
     }
 
     /**
@@ -53,17 +71,17 @@ public class SubInternetVideoActivity extends BaseActivity {
      *
      */
     private void loadData() {
-        DataUtils.loadVideos(new WebHeroCallback() {
+        DataUtils.loadVideos(mThemeId, new WebHeroCallback() {
             @Override
             public void onSuccess(String content) {
                 Gson gson = new Gson();
                 videosList = gson.fromJson(content, new TypeToken<ArrayList<Video>>(){}.getType());
 
-                Glide.with(SubInternetVideoActivity.this).load("https://images.pexels.com/photos/1103715/pexels-photo-1103715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350").into(mIvTopBackground);
+                Glide.with(SubInternetVideoActivity.this).load(mThemeImagePath).into(mIvTopBackground);
 
-                mTvName.setText("热门");
+                mTvName.setText(mThemeName);
 
-                mTvDesc.setText("这里有你想要的热门视频！");
+                mTvDesc.setText(mThemeDetail);
 
                 mRecyclerview.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
                 mRecyclerview.setAdapter(new SubInternetVideoAdapter(MyApplication.getContext(), videosList));

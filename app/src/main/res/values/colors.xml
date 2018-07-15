@@ -11,4 +11,5 @@
     <color name="colorTabLine">#F50057</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorDivider">#EEEEEE</color>
 </resources>

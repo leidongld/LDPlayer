@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -47,6 +48,9 @@ public class SubInternetVideoAdapter extends RecyclerView.Adapter<SubInternetVid
     public void onBindViewHolder(@NonNull SubInternetVideoAdapter.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.videoName.setText(videosArray[position].getName());
         Glide.with(context).load(videosArray[position].getImagePath()).into(holder.videoImage);
+        holder.videoRank.setRating(videosArray[position].getStars());
+        holder.videoRank.setEnabled(false);
+        holder.videoDetail.setText(videosArray[position].getDetail());
         holder.videoItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +75,12 @@ public class SubInternetVideoAdapter extends RecyclerView.Adapter<SubInternetVid
 
         @BindView(R.id.iv_background)
         ImageView videoImage;
+
+        @BindView(R.id.rb_rank)
+        RatingBar videoRank;
+
+        @BindView(R.id.tv_detail)
+        TextView videoDetail;
 
         public ViewHolder(View itemView) {
             super(itemView);

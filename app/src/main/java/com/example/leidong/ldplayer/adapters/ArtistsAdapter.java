@@ -56,6 +56,11 @@ public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SubInternetMusicActivity.class);
+                intent.putExtra("artistId", position+1);
+                intent.putExtra("artistName", artistsArray[position].getName());
+                intent.putExtra("artistSongNumber", artistsArray[position].getSongNumber());
+                intent.putExtra("artistImagePath", artistsArray[position].getImagePath());
+                intent.putExtra("artistDetail", artistsArray[position].getDetail());
                 context.startActivity(intent);
             }
         });
