@@ -2,6 +2,7 @@ package com.example.leidong.ldplayer.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,10 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.leidong.ldplayer.R;
 import com.example.leidong.ldplayer.beans.Music;
+import com.example.leidong.ldplayer.ui.MusicPlayActivity;
 
 import java.util.ArrayList;
 
@@ -47,7 +48,10 @@ public class LocalMusicAdapter extends RecyclerView.Adapter<LocalMusicAdapter.Vi
         holder.localMusicItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, ""+ position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, MusicPlayActivity.class);
+                intent.putExtra("currentMusic", localMusicArray[position]);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
 

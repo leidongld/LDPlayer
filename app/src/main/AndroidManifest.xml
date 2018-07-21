@@ -27,62 +27,50 @@
         </activity>
 
         <!-- IjkPlayerTest界面 -->
-        <activity android:name=".ui.TestIjkPlayerActivity">
-
-        </activity>
 
         <!-- 主界面 -->
         <activity
             android:name=".ui.MainActivity"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <!-- 编辑界面 -->
         <activity
             android:name=".ui.EditActivity"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <!-- 分享界面 -->
         <activity
             android:name=".ui.ShareActivity"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <!-- 设置界面 -->
         <activity
             android:name=".ui.SettingsActivity"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <!-- 网络音乐列表界面 -->
         <activity
             android:name=".ui.SubInternetMusicActivity"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <!-- 网络视频列表界面 -->
         <activity
             android:name=".ui.SubInternetVideoActivity"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <!-- 音乐播放界面 -->
         <activity
             android:name=".ui.MusicPlayActivity"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <!-- 视频播放界面 -->
         <activity
             android:name=".ui.VideoPlayActivity"
-            android:launchMode="singleInstance"
             android:screenOrientation="landscape" />
 
         <!--频道播放界面-->
         <activity android:name=".ui.ChannelPlayActivity"
-            android:screenOrientation="landscape"
-            android:launchMode="singleInstance"/>
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

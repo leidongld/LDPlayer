@@ -55,6 +55,8 @@ public class SubInternetVideoAdapter extends RecyclerView.Adapter<SubInternetVid
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, VideoPlayActivity.class);
+                intent.putExtra("currentVideo", videosArray[position]);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
         });

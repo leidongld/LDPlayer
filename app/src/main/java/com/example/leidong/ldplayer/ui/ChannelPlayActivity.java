@@ -2,9 +2,9 @@ package com.example.leidong.ldplayer.ui;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.widget.Toast;
 
 import com.dl7.player.media.IjkPlayerView;
 import com.example.leidong.ldplayer.R;
@@ -19,11 +19,12 @@ public class ChannelPlayActivity extends BaseActivity {
     @BindView(R.id.playerview)
     IjkPlayerView mPlayerView;
 
+
     private Channel mCurrentChannel = null;
 
     @Override
     protected int bindLayout() {
-        return R.layout.activity_music_play;
+        return R.layout.activity_channel_play;
     }
 
     @Override
@@ -42,13 +43,15 @@ public class ChannelPlayActivity extends BaseActivity {
     @Override
     public void initActions() {
         String channelPath = mCurrentChannel.getSourcePath();
-        Uri mUri = Uri.parse(channelPath);
-
-        mPlayerView.init()
-                .setVideoPath(mUri)
-                .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
-                .enableDanmaku()
-                .start();
+        if(channelPath != null && channelPath.length() != 0){
+            mPlayerView.init()
+                    .setVideoPath(channelPath)
+                    .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
+                    .enableDanmaku()
+                    .start();
+        }else {
+            Toast.makeText(this, "视频地址已失效！", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

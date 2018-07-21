@@ -4,8 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:text="这是视频播放界面"
+    <com.dl7.player.media.IjkPlayerView
+        android:id="@+id/playerview"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

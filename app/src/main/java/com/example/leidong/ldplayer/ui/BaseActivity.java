@@ -35,6 +35,7 @@ abstract class BaseActivity extends AppCompatActivity {
     private void initConfigs() {
         if (isFullScreen) {
             supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         if (isStatusBar) {
             steepStatusBar();
