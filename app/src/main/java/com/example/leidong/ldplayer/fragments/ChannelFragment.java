@@ -79,6 +79,9 @@ public class ChannelFragment extends Fragment {
         initWidgets();
     }
 
+    /**
+     * 初始化
+     */
     private void initWidgets() {
         mCctvChannelFragment = new CCTVChannelFragment();
         mSatelliteChannelFragment = new SatelliteChannelFragment();

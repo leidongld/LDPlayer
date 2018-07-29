@@ -61,8 +61,7 @@ public class FoodChannelFragment extends Fragment {
     }
 
     /**
-     *
-     *
+     * 初始化
      */
     private void initWidgets() {
         configFoodChannels();
